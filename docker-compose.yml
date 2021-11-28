@@ -15,6 +15,8 @@ services:
       - '80:8080'
     volumes:
       - 'jasperreports_data:/bitnami/jasperreports'
+      # Add user provided config to change jasper specific config
+      # - ${PWD}/config:/etc/opt/bitnami/jasperreports/config
     depends_on:
       - mariadb
     environment:
