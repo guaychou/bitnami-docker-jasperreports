@@ -82,26 +82,15 @@ $ docker-compose up -d
 
 ### Provide jasper specific file config
 
-```docker
-version: '2'
-services:
-  mariadb:
-    image: docker.io/bitnami/mariadb:10.3
-    volumes:
-      - 'mariadb_data:/bitnami/mariadb'
-    environment:
-      # ALLOW_EMPTY_PASSWORD is recommended only for development.
-      - ALLOW_EMPTY_PASSWORD=yes
-      - MARIADB_USER=bn_jasperreports
-      - MARIADB_DATABASE=bitnami_jasperreports
+```diff
+  ...
   jasperreports:
     image: docker.io/bitnami/jasperreports:7
     ports:
       - '80:8080'
     volumes:
       - 'jasperreports_data:/bitnami/jasperreports'
-      # Add user provided config to change jasper specific config
-      - ${PWD}/config:/etc/opt/bitnami/jasperreports/config
++     - ${PWD}/config:/etc/opt/bitnami/jasperreports/config
     depends_on:
       - mariadb
     environment:
@@ -111,11 +100,6 @@ services:
       - JASPERREPORTS_DATABASE_PORT_NUMBER=3306
       - JASPERREPORTS_DATABASE_USER=bn_jasperreports
       - JASPERREPORTS_DATABASE_NAME=bitnami_jasperreports
-volumes:
-  mariadb_data:
-    driver: local
-  jasperreports_data:
-    driver: local
 
 ```
 
