@@ -90,7 +90,7 @@ $ docker-compose up -d
       - '80:8080'
     volumes:
       - 'jasperreports_data:/bitnami/jasperreports'
-+     - ${PWD}/config:/etc/opt/bitnami/jasperreports/config
++     - ${PWD}/config:/bitnami/jasperreports-mounted-conf
     depends_on:
       - mariadb
     environment:
