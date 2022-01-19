@@ -90,8 +90,8 @@ $ docker-compose up -d
       - '80:8080'
     volumes:
       - 'jasperreports_data:/bitnami/jasperreports'
-#     if you want to provide your own jasper config, add the line below
-#     - ${PWD}/config:/bitnami/jasperreports-mounted-conf
+# The line below allows you to provide your own JasperReports configuration files, to be copied to WEB-INF
+# - "./config:/opt/bitnami/jasperreports/mounted-conf"
     depends_on:
       - mariadb
     environment:
